@@ -1,75 +1,242 @@
-/* Estilos específicos para la sección de Galería */
+/* styles/galeria.css */
 
+/* ============================================
+   SECCIÓN GALERÍA DE FOTOS
+   ============================================ */
 .section-galeria-fotos {
-    background-color: var(--dark-grey); /* Fondo oscuro consistente */
-    padding: 40px 0;
-    color: var(--light-grey);
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+    padding: 60px 0;
+    color: var(--neutral-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-galeria-fotos::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(6, 106, 158, 0.15), transparent);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.section-galeria-fotos .container {
+    position: relative;
+    z-index: 1;
 }
 
 .section-galeria-fotos h2 {
-    color: var(--nasa-blue);
+    color: var(--white);
     text-align: center;
-    margin-bottom: 10px;
-    font-size: 2em;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+    animation: fadeInDown 0.8s ease;
 }
 
-.section-galeria-fotos p {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.1em;
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* --- Cuadrícula de Fotos (Mobile First) --- */
+.section-galeria-fotos h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+}
 
+.section-galeria-fotos > p {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.2em;
+    color: var(--neutral-light);
+    animation: fadeIn 1s ease;
+}
+
+/* ============================================
+   CUADRÍCULA DE FOTOS
+   ============================================ */
 .photo-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Una columna por defecto en móvil */
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    animation: fadeInUp 1.2s ease;
 }
 
 .photo-item {
-    background-color: var(--nasa-blue); /* Fondo azul para la tarjeta de foto */
-    border-radius: 8px;
+    background: linear-gradient(145deg, rgba(1, 62, 108, 0.8), rgba(1, 26, 61, 0.8));
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.photo-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(6, 106, 158, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.photo-item:hover::before {
+    opacity: 1;
 }
 
 .photo-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    transform: translateY(-12px) scale(1.02);
+    border-color: var(--primary-blue);
+    box-shadow: 0 15px 45px rgba(6, 106, 158, 0.5);
 }
 
 .photo-item img {
     width: 100%;
-    height: 250px; /* Altura fija para uniformidad en móvil */
-    object-fit: cover; /* Recorta la imagen para llenar el espacio sin deformar */
+    height: 280px;
+    object-fit: cover;
     display: block;
+    transition: transform 0.6s ease;
+    filter: brightness(0.9);
+}
+
+.photo-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(1);
 }
 
 .photo-caption {
-    padding: 15px;
-    font-size: 0.9em;
+    padding: 20px;
+    font-size: 0.95em;
     color: var(--white);
     text-align: center;
+    background: rgba(1, 26, 61, 0.9);
+    position: relative;
+    z-index: 2;
 }
 
-/* --- Media Queries para Desktop --- */
+.photo-caption p {
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Efecto de revelación staggered para las fotos */
+.photo-item {
+    opacity: 0;
+    animation: revealPhoto 0.8s ease forwards;
+}
+
+.photo-item:nth-child(1) { animation-delay: 0.1s; }
+.photo-item:nth-child(2) { animation-delay: 0.2s; }
+.photo-item:nth-child(3) { animation-delay: 0.3s; }
+.photo-item:nth-child(4) { animation-delay: 0.4s; }
+.photo-item:nth-child(5) { animation-delay: 0.5s; }
+.photo-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes revealPhoto {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
 @media (min-width: 768px) {
     .photo-grid {
-        /* Dos columnas en tabletas y escritorio pequeños */
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 30px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
     }
 
     .photo-item img {
-        height: 300px; /* Mayor altura en desktop */
+        height: 320px;
+    }
+
+    .photo-caption {
+        padding: 25px;
+        font-size: 1em;
     }
 }
 
+/* ============================================
+   RESPONSIVE - DESKTOP
+   ============================================ */
 @media (min-width: 1024px) {
     .photo-grid {
-        /* Tres columnas en pantallas más grandes */
         grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
     }
+
+    .photo-item img {
+        height: 350px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - LARGE DESKTOP
+   ============================================ */
+@media (min-width: 1440px) {
+    .photo-grid {
+        gap: 45px;
+    }
+
+    .photo-item img {
+        height: 380px;
+    }
+}
+
+/* ============================================
+   LIGHTBOX OPCIONAL (Para ver imágenes grandes)
+   ============================================ */
+.photo-item {
+    cursor: pointer;
+    position: relative;
+}
+
+.photo-item::after {
+    content: '🔍';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    color: var(--white);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.photo-item:hover::after {
+    opacity: 1;
 }

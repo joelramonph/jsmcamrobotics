@@ -1,620 +1,778 @@
-/* Reseteo básico para asegurar consistencia entre navegadores */
+/* styles/main.css */
+
+/* ============================================
+   RESET Y CONFIGURACIÓN BASE
+   ============================================ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Variables de color (para facilitar cambios y mantener consistencia) */
 :root {
-    --nasa-blue: #0B3D91; /* Un azul profundo, similar al de la NASA */
-    --light-grey: #D3D3D3;
-    --dark-grey: #333333;
+    /* Paleta de colores JSM CAM ROBOTICS */
+    --primary-dark: #011A3D;
+    --primary-medium: #012E63;
+    --primary-blue: #066A9E;
+    --primary-light: #013E6C;
+    --neutral-light: #D7DAD4;
     --white: #FFFFFF;
-    --accent-red: #E04E39; /* Un rojo para acentos o botones */
+    --accent-highlight: #00A6D6;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(1, 26, 61, 0.1);
+    --shadow-md: 0 4px 16px rgba(1, 26, 61, 0.15);
+    --shadow-lg: 0 8px 24px rgba(1, 26, 61, 0.2);
+    
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
 }
 
 body {
-    font-family: Arial, sans-serif; /* Fuente base */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: var(--light-grey); /* Color de texto general */
-    background-color: var(--dark-grey); /* Fondo oscuro general */
+    color: var(--neutral-light);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-medium) 100%);
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 90%; /* Ancho máximo en móviles */
+    max-width: 90%;
     margin: 0 auto;
-    padding: 0 15px; /* Espaciado interno */
+    padding: 0 20px;
 }
 
-/* --- HEADER --- */
+@media (min-width: 768px) {
+    .container {
+        max-width: 1200px;
+        padding: 0 40px;
+    }
+}
+
+/* ============================================
+   HEADER Y NAVEGACIÓN
+   ============================================ */
 .main-header {
-    background-color: var(--dark-grey);
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-medium));
     padding: 15px 0;
-    position: relative; /* Necesario para posicionar el menú */
-    border-bottom: 1px solid var(--nasa-blue);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+    border-bottom: 3px solid var(--primary-blue);
 }
 
 .main-header .container {
     display: flex;
-    justify-content: space-between; /* Espacia el logo y el botón */
+    justify-content: space-between;
     align-items: center;
 }
 
 .main-header .logo img {
-   height: 60px; /* Ajusta el tamaño según tu preferencia, pero asegúrate de que sea el mismo para ancho y alto */
-    width: 60px;  
-    border-radius: 50%; 
-    object-fit: cover; 
-    border: 2px solid var(--nasa-blue); 
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-blue);
+    transition: var(--transition-medium);
+    box-shadow: 0 0 20px rgba(6, 106, 158, 0.3);
 }
 
-/* Estilos del botón de menú hamburguesa */
+.main-header .logo img:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 30px rgba(6, 106, 158, 0.6);
+}
+
+/* Menú Hamburguesa */
 .menu-toggle {
-    display: flex; /* Para que las "barras" estén una debajo de la otra */
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 25px;
+    width: 35px;
+    height: 30px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1000; /* Asegura que esté por encima del menú */
+    z-index: 1001;
 }
 
 .menu-toggle .bar {
     display: block;
     width: 100%;
-    height: 3px;
-    background-color: var(--white);
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-highlight));
+    border-radius: 3px;
+    transition: var(--transition-medium);
 }
 
-/* Estilos de la navegación (oculta por defecto en móviles) */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Navegación Principal */
 .main-nav {
-    display: none; /* Oculto por defecto en móviles */
+    display: none;
     position: absolute;
-    top: 100%; /* Debajo del header */
+    top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--nasa-blue); /* Fondo del menú desplegado */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    padding: 15px 0;
+    background: linear-gradient(180deg, var(--primary-medium), var(--primary-dark));
+    box-shadow: var(--shadow-lg);
+    padding: 20px 0;
     text-align: center;
 }
 
 .main-nav.active {
-    display: block; /* Visible cuando se le añade la clase 'active' con JS */
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .main-nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 .main-nav ul li {
-    margin: 10px 0; /* Espacio vertical entre ítems del menú */
+    margin: 15px 0;
 }
 
 .main-nav ul li a {
-    color: var(--white);
+    color: var(--neutral-light);
     text-decoration: none;
     font-size: 1.1em;
-    padding: 10px 20px;
-    display: block; /* Para que todo el área del li sea clicable */
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    padding: 12px 25px;
+    display: inline-block;
+    border-radius: 8px;
+    transition: var(--transition-medium);
+    position: relative;
+    overflow: hidden;
 }
 
-.main-nav ul li a:hover,
-.main-nav ul li a:focus {
-    background-color: rgba(255, 255, 255, 0.1);
+.main-nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--primary-blue);
+    transition: var(--transition-medium);
+    transform: translateX(-50%);
 }
 
-/* --- HERO CARRUSEL --- */
+.main-nav ul li a:hover::before,
+.main-nav ul li.active a::before {
+    width: 80%;
+}
+
+.main-nav ul li a:hover {
+    color: var(--white);
+    background: rgba(6, 106, 158, 0.2);
+}
+
+/* Desktop Navigation */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        display: block !important;
+        width: auto;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .main-nav ul {
+        display: flex;
+        gap: 10px;
+    }
+
+    .main-nav ul li {
+        margin: 0;
+    }
+
+    .main-nav ul li a {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+/* ============================================
+   CARRUSEL HERO
+   ============================================ */
 .hero.carousel {
     position: relative;
-    overflow: hidden; /* Oculta las imágenes que no están activas */
-    height: 350px; /* Altura fija para el carrusel en móviles. Ajusta según necesites. */
+    overflow: hidden;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--dark-grey); /* Fondo de fallback */
+    background: var(--primary-dark);
+    box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-inner {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s ease-in-out; /* Suaviza el movimiento entre slides */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carousel-item {
-    min-width: 100%; /* Cada ítem ocupa el 100% del ancho del contenedor */
+    min-width: 100%;
     height: 100%;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Asegura que la imagen no se desborde */
 }
-
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cubre el área del carrusel, recortando si es necesario */
-    object-position: center; /* Centra la imagen */
-    display: block;
-}
-
-.carousel-caption {
-    position: absolute;
-    bottom: 0; /* Posiciona el texto en la parte inferior */
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Degradado para legibilidad */
-    color: var(--white);
-    text-align: center;
-}
-
-.carousel-caption h1 {
-    font-size: 1.5em; /* Tamaño de fuente para móviles */
-    margin-bottom: 10px;
-}
-
-.carousel-caption p {
-    font-size: 0.9em;
-    margin-bottom: 15px;
-}
-
-/* Controles de navegación (flechas) */
-.carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: var(--white);
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 1.5em;
-    z-index: 10;
-    border-radius: 5px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-}
-
-.carousel-control:hover {
-    opacity: 1;
-}
-
-.carousel-control.prev {
-    left: 10px;
-}
-
-.carousel-control.next {
-    right: 10px;
-}
-
-/* Indicadores de diapositivas (puntos) */
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
-}
-
-.carousel-indicators .dot {
-    height: 10px;
-    width: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.carousel-indicators .dot.active {
-    background-color: var(--white);
-}
-
-
-
-
-
-
-
-/* Estilos para las secciones principales (temporal) */
-main {
-    padding: 20px 0;
-}
-
-section {
-    padding: 40px 0;
-    border-bottom: 1px solid var(--dark-grey);
-}
-
-section:last-of-type {
-    border-bottom: none;
-}
-
-section h2 {
-    color: var(--nasa-blue);
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.8em;
-}
-
-section p {
-    margin-bottom: 20px;
-    text-align: justify;
-}
-
-section img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-    border-radius: 8px;
-}
-
-
-
-
-
-
-
 
 .carousel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center; /* Esta regla debe estar aquí, fuera de cualquier @media query */
-    display: block;
+    object-position: center;
+    filter: brightness(0.7);
 }
 
-/* MAIN CONTENT SECTIONS */
-.main-content {
-    padding: 20px 0;
-    background-color: var(--dark-grey);
-}
-
-.section-acerca {
-    background-color: var(--nasa-blue);
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 20px;
+    background: linear-gradient(to top, rgba(1, 26, 61, 0.95), transparent);
     color: var(--white);
-    padding: 40px 0;
+    text-align: center;
+}
+
+.carousel-caption h1 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    animation: fadeInUp 0.8s ease;
+}
+
+.carousel-caption p {
+    font-size: 1em;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Botón CTA */
+.btn-primary {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-highlight));
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition-medium);
+    box-shadow: 0 4px 15px rgba(6, 106, 158, 0.4);
+    animation: fadeInUp 1.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(6, 106, 158, 0.6);
+    background: linear-gradient(135deg, var(--accent-highlight), var(--primary-blue));
+}
+
+/* Controles del Carrusel */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(6, 106, 158, 0.7);
+    color: var(--white);
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 2em;
+    z-index: 10;
+    border-radius: 8px;
+    transition: var(--transition-fast);
+    backdrop-filter: blur(5px);
+}
+
+.carousel-control:hover {
+    background: rgba(6, 106, 158, 0.95);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control.prev {
+    left: 15px;
+}
+
+.carousel-control.next {
+    right: 15px;
+}
+
+/* Indicadores */
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.carousel-indicators .dot {
+    height: 12px;
+    width: 12px;
+    background: rgba(215, 218, 212, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    border: 2px solid transparent;
+}
+
+.carousel-indicators .dot.active {
+    background: var(--primary-blue);
+    border-color: var(--white);
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(6, 106, 158, 0.8);
+}
+
+@media (min-width: 768px) {
+    .hero.carousel {
+        height: 600px;
+    }
+
+    .carousel-caption {
+        padding: 50px 40px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 3.5em;
+    }
+
+    .carousel-caption p {
+        font-size: 1.3em;
+        max-width: 70%;
+        margin: 0 auto 30px;
+    }
+}
+
+/* ============================================
+   SECCIÓN ABOUT
+   ============================================ */
+.section-acerca {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-medium));
+    color: var(--neutral-light);
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-acerca::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(6, 106, 158, 0.1), transparent);
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .section-acerca .container {
-    max-width: 90%;
-    margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .section-acerca .highlight-subtitle {
-    color: var(--accent-red); /* Utiliza tu color de acento rojo */
-    font-size: 1.1em;
-    font-weight: bold;
-    text-align: center; /* Centrado en móvil */
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid var(--accent-red); /* Línea decorativa */
-    display: inline-block; /* Permite que la línea se ajuste al ancho del texto */
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.section-acerca .content-wrapper .countdown-timer {
-    text-align: center; 
-    font-size: 1.5em; 
-    font-weight: bold;
-    color: var(--white);
-    margin-top: 15px;
-    margin-bottom: 5px;
+    color: var(--primary-blue);
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    border-left: 4px solid var(--primary-blue);
+    border-right: 4px solid var(--primary-blue);
+    display: inline-block;
     text-transform: uppercase;
     letter-spacing: 1px;
+    animation: slideInLeft 0.8s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Contador y Reloj */
+.countdown-timer {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--white);
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(1, 26, 61, 0.4);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
 }
 
 .countdown-number {
-    color: var(--accent-red);
-    font-size: 2em;
+    display: block;
+    color: var(--primary-blue);
+    font-size: 2.5em;
     font-weight: 900;
-    margin-left: 0; 
-    display: block; 
-    padding-top: 5px;
+    margin-top: 10px;
+    text-shadow: 0 0 20px rgba(6, 106, 158, 0.5);
+    animation: pulse 2s infinite;
 }
 
-/* --- Estilo de Reloj Digital (Centrado en Móvil) --- */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
 .digital-clock {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.4em;
-    font-weight: bold;
-    color: var(--light-grey);
-    text-align: center; /* CENTRADO EN MÓVIL */
-    margin-bottom: 25px;
-    padding: 10px 20px;
-    background-color: var(--dark-grey);
-    border: 3px solid var(--accent-red); /* Borde de acento para resaltar */
-    border-radius: 8px;
-    letter-spacing: 3px; /* Mayor espaciado para efecto digital */
-    box-shadow: 0 0 15px rgba(224, 78, 57, 0.5); /* Sombra exterior roja (glow) */
-    max-width: 300px; /* Limita el ancho del reloj para que sea un bloque más centrado */
-    margin-left: auto; /* Centrado automático para bloques en móvil */
-    margin-right: auto;
+    font-weight: 700;
+    color: var(--neutral-light);
+    text-align: center;
+    margin: 25px auto;
+    padding: 15px 25px;
+    background: rgba(1, 26, 61, 0.6);
+    border: 3px solid var(--primary-blue);
+    border-radius: 12px;
+    letter-spacing: 3px;
+    box-shadow: 0 0 20px rgba(6, 106, 158, 0.4);
+    max-width: 350px;
 }
+
 .section-acerca h2 {
     color: var(--white);
     text-align: center;
-    margin-bottom: 25px;
-    font-size: 1.8em;
+    margin: 40px 0 25px;
+    font-size: 2.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-acerca h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
 }
 
 .section-acerca h3 {
-    color: var(--light-grey);
-    font-size: 1.4em;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    color: var(--primary-blue);
+    font-size: 1.6em;
+    margin: 30px 0 20px;
     text-align: center;
 }
 
 .section-acerca p {
-    font-size: 1em;
-    line-height: 1.6;
+    font-size: 1.05em;
+    line-height: 1.8;
     margin-bottom: 20px;
     text-align: justify;
 }
 
 .section-acerca img {
     max-width: 100%;
-    max-height: 200px; /* Agrega esta línea */
     height: auto;
+    max-height: 300px;
     display: block;
-    margin: 30px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    object-fit: cover; /* Opcional: para mantener la proporción y recortar si es necesario */
-    object-position: center top; /* Opcional: para enfocar la parte superior de la imagen */
+    margin: 40px auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 3px solid var(--primary-blue);
+    transition: var(--transition-medium);
 }
 
+.section-acerca img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(6, 106, 158, 0.6);
+}
 
+@media (min-width: 768px) {
+    .section-acerca .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 50px;
+    }
 
-/* SECCIÓN INTEGRANTES DEL EQUIPO */
+    .section-acerca .content-wrapper {
+        flex: 1;
+        text-align: left;
+    }
+
+    .section-acerca .highlight-subtitle {
+        text-align: left;
+        margin-left: 0;
+    }
+
+    .countdown-timer,
+    .digital-clock {
+        text-align: left;
+        margin-left: 0;
+    }
+
+    .section-acerca h2,
+    .section-acerca h3 {
+        text-align: left;
+    }
+
+    .section-acerca h2::after {
+        left: 0;
+        transform: none;
+    }
+
+    .section-acerca img {
+        flex-shrink: 0;
+        width: 450px;
+        max-height: 500px;
+        margin: 0;
+    }
+}
+
+/* ============================================
+   SECCIÓN EQUIPO
+   ============================================ */
 .section-equipo {
-    background-color: var(--nasa-blue); 
-    color: var(--light-grey);
-    padding: 40px 0;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+    color: var(--neutral-light);
+    padding: 60px 0;
 }
 
 .section-equipo h2 {
     color: var(--white);
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.8em;
+    margin-bottom: 50px;
+    font-size: 2.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-equipo h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
 }
 
 .team-members {
     display: flex;
-    flex-direction: column; 
-    gap: 20px; 
+    flex-direction: column;
+    gap: 30px;
 }
 
 .member-card {
-    background-color: var(--nasa-blue);
-    border-radius: 8px;
+    background: linear-gradient(145deg, rgba(1, 62, 108, 0.6), rgba(1, 46, 99, 0.6));
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-medium);
+    border: 2px solid transparent;
+}
+
+.member-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 12px 35px rgba(6, 106, 158, 0.4);
 }
 
 .member-header {
     display: flex;
     align-items: center;
-    padding: 15px;
-    gap: 15px;
-    background-color: rgba(0, 0, 0, 0.2); /* Fondo sutil para el header del miembro */
+    padding: 25px;
+    gap: 20px;
+    background: rgba(1, 26, 61, 0.4);
 }
 
 .member-photo {
-    width: 80px !important; /* Tamaño de la miniatura */
-    height: 80px !important;
-    border-radius: 50%; /* Foto redonda */
+    width: 90px !important;
+    height: 90px !important;
+    border-radius: 50%;
     object-fit: cover;
-    object-position: center;
-    border: 2px solid var(--light-grey);
+    border: 3px solid var(--primary-blue);
+    box-shadow: 0 0 15px rgba(6, 106, 158, 0.5);
+    transition: var(--transition-medium);
+}
+
+.member-card:hover .member-photo {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(6, 106, 158, 0.8);
 }
 
 .member-info {
-    flex-grow: 1; /* Permite que la información ocupe el espacio restante */
+    flex-grow: 1;
 }
 
 .member-info h3 {
     color: var(--white);
-    font-size: 1.2em;
-    margin-bottom: 5px;
+    font-size: 1.3em;
+    margin-bottom: 8px;
 }
 
 .member-info .member-title {
-    color: var(--light-grey);
-    font-size: 0.9em;
+    color: var(--primary-blue);
+    font-size: 1em;
+    font-weight: 600;
 }
 
 .member-info .member-role {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.8em;
+    color: var(--neutral-light);
+    font-size: 0.9em;
+    opacity: 0.9;
 }
 
 .expand-btn {
-    background: none;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-highlight));
     border: none;
     color: var(--white);
     font-size: 2em;
     cursor: pointer;
-    padding: 0 10px;
-    transition: transform 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: var(--transition-medium);
+    box-shadow: 0 4px 10px rgba(6, 106, 158, 0.3);
+}
+
+.expand-btn:hover {
+    transform: rotate(90deg);
+    background: linear-gradient(135deg, var(--accent-highlight), var(--primary-blue));
 }
 
 .expand-btn.active {
-    transform: rotate(45deg); /* Gira el símbolo '+' a 'x' o un icono de cierre */
+    transform: rotate(45deg);
 }
 
 .member-details {
-    display: none; /* Oculta el contenido extendido por defecto */
-    padding: 0 15px;
-    background-color: var(--nasa-blue);
-    color: var(--white);
+    display: none;
+    padding: 0 25px;
+    background: rgba(1, 26, 61, 0.3);
+    color: var(--neutral-light);
 }
 
 .member-details.active {
-    display: block; /* Muestra el contenido cuando está activo */
-    padding-bottom: 15px; /* Padding extra para el contenido desplegado */
+    display: block;
+    padding-bottom: 25px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 1000px;
+    }
 }
 
 .member-description-short {
-    font-size: 0.9em;
-    margin-bottom: 10px;
-    padding-top: 15px; /* Padding para la descripción corta cuando está visible */
-}
-
-.member-details .member-description-full {
-    padding-bottom: 10px;
+    font-size: 0.95em;
+    margin: 15px 0;
+    line-height: 1.6;
 }
 
 .member-details ul {
     list-style: none;
     padding-left: 0;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .member-details ul li {
-    font-size: 0.85em;
-    margin-bottom: 5px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-
-.section-objetivos {
-    background-color: var(--nasa-blue); /* Fondo de la sección en azul NASA */
-    color: var(--light-grey);
-    padding: 40px 0;
-}
-
-.section-objetivos h2 {
-    color: var(--white); /* Título principal de la sección en blanco */
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.8em;
-}
-
-.objective-cards {
-    display: grid;
-    grid-template-columns: 1fr; /* Una columna en móviles */
-    gap: 25px;
-    justify-items: center;
-}
-
-.objective-card {
-    background-color: rgba(0, 0, 0, 0.2); /* Fondo de tarjeta más oscuro para efecto degradado */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 250px; /* Altura mínima para asegurar uniformidad */
-    max-width: 300px;
-    justify-content: flex-start;
-    flex-grow: 1;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    padding-left: 25px;
     position: relative;
 }
 
-.objective-card .icon-placeholder {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--nasa-blue); /* Fondo del icono en azul NASA */
-    border-radius: 50%;
+.member-details ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-weight: 700;
 }
 
-.objective-card .icon-placeholder img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    display: block;
-}
-
-.objective-card h3 {
-    color: var(--white); /* Título de la tarjeta en blanco */
-    font-size: 1.15em;
-    margin-bottom: 10px;
-}
-
-.objective-card p {
-    color: var(--light-grey);
-    font-size: 0.9em;
-    line-height: 1.5;
-    text-align: center;
-    flex-grow: 1;
-}
-
-/* Media Query para pantallas más grandes (Desktop) */
 @media (min-width: 768px) {
-    .objective-cards {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2 o 3 columnas */
-        gap: 30px;
-    }
-
-    .objective-card {
-        min-height: 280px; /* Ajustar altura mínima para desktop si es necesario */
-    }
-
-      .team-members {
-        display: flex;
+    .team-members {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 30px;
     }
 
     .member-card {
         flex: 0 0 calc(33.333% - 20px);
-        max-width: 350px;
-        min-height: auto;
-        align-items: flex-start;
-        text-align: left;
-        justify-content: flex-start;
-    }
-
-     .member-header {
-        justify-content: flex-start;
-        padding: 20px;
-    }
-
-    .member-photo {
-        width: 100px;
-        height: 100px;
-        border-radius: 15px;
-    }
-
-    .member-info {
-        margin-left: 15px;
-    }
-
-    .member-info h3 {
-        font-size: 1.4em;
-    }
-
-    .member-info .member-title,
-    .member-info .member-role {
-        font-size: 1em;
+        max-width: 380px;
     }
 
     .expand-btn {
@@ -623,266 +781,222 @@ section img {
 
     .member-details {
         display: block !important;
-        padding: 15px 20px 20px;
-        background-color: transparent;
-        flex-grow: 0;
-    }
-
-    .member-description-short {
-        display: block !important;
-        padding-top: 0;
-    }
-
-    .member-details .member-description-full {
-        display: none;
-    }
-
-    .member-details ul {
-        margin-top: 15px;
-    }
-
-    .member-details ul li {
-        font-size: 0.9em;
+        padding: 20px 25px 25px;
+        background: transparent;
     }
 }
 
+/* ============================================
+   SECCIÓN OBJETIVOS
+   ============================================ */
+.section-objetivos {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-medium));
+    padding: 60px 0;
+}
 
-/* --- Sección Footer --- */
+.section-objetivos h2 {
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-objetivos h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+}
+
+.objective-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    justify-items: center;
+}
+
+.objective-card {
+    background: linear-gradient(145deg, rgba(1, 62, 108, 0.6), rgba(1, 26, 61, 0.6));
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 280px;
+    max-width: 350px;
+    width: 100%;
+    transition: var(--transition-medium);
+    border: 2px solid transparent;
+}
+
+.objective-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--primary-blue);
+    box-shadow: 0 15px 40px rgba(6, 106, 158, 0.5);
+}
+
+.objective-card .icon-placeholder {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-highlight));
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(6, 106, 158, 0.4);
+    transition: var(--transition-medium);
+}
+
+.objective-card:hover .icon-placeholder {
+    transform: rotate(360deg) scale(1.1);
+    box-shadow: 0 8px 25px rgba(6, 106, 158, 0.6);
+}
+
+.objective-card .icon-placeholder img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.objective-card h3 {
+    color: var(--white);
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.objective-card p {
+    color: var(--neutral-light);
+    font-size: 0.95em;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+@media (min-width: 768px) {
+    .objective-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .objective-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
 .main-footer {
-    background-color: var(--dark-grey);
-    color: var(--light-grey);
-    padding: 30px 0; /* Un poco más de padding para que respire */
-    border-top: 1px solid var(--nasa-blue);
-    font-size: 0.9em;
-    text-align: center; /* Centra todo por defecto para mobile-first */
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-medium));
+    color: var(--neutral-light);
+    padding: 40px 0;
+    border-top: 3px solid var(--primary-blue);
+    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .main-footer .container {
     display: flex;
-    flex-direction: column; /* Apila los elementos verticalmente en móvil */
-    gap: 20px; /* Espacio entre los bloques del footer */
-    align-items: center; /* Centra los elementos horizontalmente */
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    text-align: center;
 }
 
 .footer-slogan {
-    font-size: 1.8em; /* Tamaño grande para el slogan en móvil */
-    color: var(--white); /* Color blanco para el slogan */
-    font-weight: bold;
-    margin-bottom: 10px;
-    line-height: 1.3;
+    font-size: 1.8em;
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.4;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .social-media {
     display: flex;
-    gap: 15px; /* Espacio entre los iconos */
-    margin-bottom: 10px; /* Espacio debajo de los iconos */
+    gap: 20px;
 }
 
 .social-media a {
-    display: block; /* Asegura que el enlace sea un bloque para envolver la imagen */
-    line-height: 0; /* Elimina espacio extra si la imagen es inline */
+    display: block;
+    transition: var(--transition-medium);
 }
 
 .social-media img {
-    height: 32px; /* Tamaño de los iconos */
-    width: 32px;
+    height: 40px;
+    width: 40px;
     object-fit: contain;
-    transition: transform 0.2s ease-in-out; /* Animación al pasar el ratón */
+    filter: brightness(0) invert(1);
+    transition: var(--transition-medium);
 }
 
-.social-media img:hover {
-    transform: scale(1.1); /* Ligeramente más grande al pasar el ratón */
+.social-media a:hover img {
+    transform: scale(1.2) rotate(10deg);
+    filter: brightness(1) invert(0);
 }
 
 .copyright {
-    font-size: 0.85em; /* Tamaño más pequeño para los derechos de autor */
-    color: rgba(255, 255, 255, 0.7); /* Un gris más suave para los derechos de autor */
+    font-size: 0.9em;
+    color: rgba(215, 218, 212, 0.7);
 }
 
-/* --- Media Query para Desktop --- */
 @media (min-width: 768px) {
-
-    .section-acerca .highlight-subtitle {
-        text-align: left; /* Alineado a la izquierda en desktop */
-        margin-left: 0;
-        margin-right: auto;
-    }
-
-    .section-acerca .countdown-timer {
-        text-align: left;
-    }
-
-    .countdown-number {
-        display: inline; /* Vuelve a poner el número en la misma línea que el texto en desktop */
-    }
-
-    .digital-clock {
-        text-align: left;
-        margin-left: 0; /* Deshacer el centrado del bloque */
-        margin-right: auto;
-        max-width: 100%; /* Permite que ocupe el ancho de la columna de texto */
-    }
-
-   
     .main-footer .container {
-        flex-direction: row; /* Coloca los elementos en fila en desktop */
-        justify-content: space-between; /* Distribuye el espacio entre los elementos */
-        align-items: center; /* Alinea los elementos verticalmente */
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
     }
 
     .footer-slogan {
-        font-size: 2.5em; /* Slogan aún más grande en desktop */
-        text-align: left; /* Alinea el slogan a la izquierda */
-        flex-basis: 40%; /* Ocupa el 40% del espacio para el slogan */
-        margin-bottom: 0;
+        font-size: 2.5em;
+        flex-basis: 40%;
     }
 
     .social-media {
-        flex-basis: 30%; /* Ocupa el 30% del espacio para redes sociales */
-        justify-content: center; /* Centra los iconos si hay espacio */
-        margin-bottom: 0;
+        flex-basis: 30%;
+        justify-content: center;
     }
 
     .social-media img {
-        height: 40px; /* Iconos más grandes en desktop */
-        width: 40px;
+        height: 45px;
+        width: 45px;
     }
 
     .copyright {
-        flex-basis: 30%; /* Ocupa el 30% del espacio para derechos de autor */
-        text-align: right; /* Alinea los derechos de autor a la derecha */
+        flex-basis: 30%;
+        text-align: right;
     }
 }
 
-/* Opcional: Para pantallas muy grandes, más columnas */
-@media (min-width: 1200px) {
-    .objective-cards {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 4 o más columnas */
+/* ============================================
+   UTILIDADES
+   ============================================ */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Animaciones adicionales */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
     }
 }
 
-
-
-
-/* --- Media Queries para Desktop --- */
-@media (min-width: 768px) {
-    /* HEADER */
-    .main-header .container {
-        justify-content: space-between; /* Mantén el espacio entre logo y nav */
-    }
-
-    .main-header .logo img {
-        height: 70px; /* Ajusta el tamaño del logo para desktop */
-        width: 70px;
-    }
-
-    .menu-toggle {
-        display: none; /* Oculta el botón de hamburguesa en desktop */
-    }
-
-    .main-nav {
-        position: static; /* Quita el posicionamiento absoluto */
-        display: block !important; /* Asegura que el menú sea visible */
-        width: auto;
-        background-color: transparent; /* Fondo transparente para el menú */
-        box-shadow: none;
-        padding: 0;
-        text-align: right; /* Alinea los ítems a la derecha */
-    }
-
-    .main-nav ul {
-        display: flex; /* Muestra los ítems en fila */
-        gap: 25px; /* Espacio entre los ítems de navegación */
-    }
-
-    .main-nav ul li {
-        margin: 0; /* Elimina el margen vertical para navegación horizontal */
-    }
-
-    .main-nav ul li a {
-        padding: 8px 15px; /* Ajusta el padding para enlaces en desktop */
-        font-size: 1em;
-        background-color: transparent; /* Asegura que no tenga fondo por defecto */
-    }
-
-    .main-nav ul li a:hover,
-    .main-nav ul li a:focus {
-        background-color: rgba(255, 255, 255, 0.1); /* Sutil hover, o un color de acento */
-        border-radius: 5px;
-    }
-
-    /* Ajuste de padding para las secciones principales en desktop */
-    .container {
-        max-width: 1200px; /* Ancho máximo para el contenido en desktop */
-        padding: 0 20px;
-    }
-
-     .hero.carousel {
-        height: 600px; /* Mayor altura para el carrusel en desktop */
-    }
-
-    .carousel-caption {
-        padding: 40px; /* Más padding para el texto */
-    }
-
-    .carousel-caption h1 {
-        font-size: 3em; /* Texto de título más grande */
-        margin-bottom: 20px;
-    }
-
-    .carousel-caption p {
-        font-size: 1.2em; /* Texto de párrafo más grande */
-        max-width: 70%; /* Limita el ancho del párrafo para mejor legibilidad */
-        margin: 0 auto 30px auto; /* Centra el párrafo */
-    }
-
-    .carousel-control {
-        padding: 15px 20px; /* Flechas más grandes y fáciles de hacer clic */
-        font-size: 2em;
-        /* Puedes añadir aquí un background que no opaque demasiado la imagen */
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .carousel-indicators {
-        bottom: 20px; /* Baja los indicadores un poco más */
-        gap: 12px; /* Más espacio entre los puntos */
-    }
-
-    .carousel-indicators .dot {
-        height: 12px; /* Puntos indicadores más grandes */
-        width: 12px;
-    }
-
-      .section-acerca .container {
-        display: flex;
-        flex-direction: row; /* Asegura que los elementos estén en fila (texto a la izquierda, imagen a la derecha) */
-        align-items: center;
-        gap: 40px;
-        /* text-align: left;  Eliminamos esto de aquí si lo tenías, ya que afecta al contenedor flex entero */
-    }
-
-    .section-acerca .content-wrapper {
-        flex: 1; /* Permite que el texto ocupe el espacio restante */
-        text-align: left; /* Asegura que el texto dentro del wrapper se alinee a la izquierda */
-    }
-
-     .section-acerca h2,
-    .section-acerca h3 {
-        text-align: left; /* Alinea los títulos a la izquierda */
-    }
-
-    .section-acerca p {
-        text-align: justify; /* Mantiene el texto justificado para mejor lectura, o cámbialo a 'left' si prefieres */
-    }
-
-    .section-acerca img {
-        flex-shrink: 0;
-        width: 450px;
-        height: auto;
-        max-height: 500px;
-        margin: 0; /* Elimina cualquier margen de centrado residual */
-    }
-
-    
+.floating {
+    animation: float 3s ease-in-out infinite;
 }
-

@@ -1,409 +1,331 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>JSM CAM ROBOTICS</title>
-        <link rel="stylesheet" href="./styles/main.css">
-    </head>
-    <body>
-        <header class="main-header">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JSM CAM ROBOTICS - Equipo venezolano representando a Venezuela en WRO 2025 Singapore con el proyecto EXPLORER SYSTEM">
+    <meta name="keywords" content="JSM CAM ROBOTICS, WRO 2025, robotics, Venezuela, Singapore, EXPLORER SYSTEM">
+    <title>JSM CAM ROBOTICS | WRO 2025 Singapore</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    
+    <!-- Preconexión para optimización -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="assets/logojsm.jpeg" alt="Logo JSM CAM ROBOTICS">
+            </a>
+            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav class="main-nav">
+                <ul>
+                    <li class="active"><a href="#acerca">About</a></li>
+                    <li><a href="./pages/galeria.html">Gallery</a></li>
+                    <li><a href="#equipo">Team</a></li>
+                    <li><a href="#objetivos">Objectives</a></li>
+                    <li><a href="./pages/terminosCondiciones.html">Terms</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO CAROUSEL -->
+    <section class="hero carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="assets/JSM-7-CUT.jpg" alt="JSM CAM ROBOTICS team members">
+                <div class="carousel-caption">
+                    <h1>On Our Way to Singapore!</h1>
+                    <p>Representing Venezuela at the WRO 2025</p>
+                    <a href="#acerca" class="btn-primary">Discover More</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="assets/JSM-8-CUT.jpg" alt="EXPLORER SYSTEM robot">
+                <div class="carousel-caption">
+                    <h1>EXPLORER SYSTEM</h1>
+                    <p>Innovative robotic solution for space exploration</p>
+                    <a href="#acerca" class="btn-primary">Learn More</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="assets/JSM-11.jpg" alt="Team working on project">
+                <div class="carousel-caption">
+                    <h1>Innovation & Technology</h1>
+                    <p>Detecting conditions favorable for life on other planets</p>
+                    <a href="#objetivos" class="btn-primary">Our Mission</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control prev" aria-label="Previous image">&#10094;</button>
+        <button class="carousel-control next" aria-label="Next image">&#10095;</button>
+        <div class="carousel-indicators">
+            <span class="dot active" data-slide-to="0" aria-label="Go to slide 1"></span>
+            <span class="dot" data-slide-to="1" aria-label="Go to slide 2"></span>
+            <span class="dot" data-slide-to="2" aria-label="Go to slide 3"></span>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- ABOUT SECTION -->
+        <section id="acerca" class="section-acerca">
             <div class="container">
-                <a href="#" class="logo">
-                    <img src="assets/logojsm.jpeg" alt="Logo JSM CAM ROBOTICS">
-                </a>
-                <button class="menu-toggle" aria-label="Abrir menú">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="#acerca">Acerca</a></li>
-                        <li><a href="./pages/galeria.html">Galería</a></li>
-                        <li><a href="#equipo">Integrantes del Equipo</a></li>
-                        <li><a href="#objetivos">Objetivos</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+                <div class="content-wrapper">
+                    <h4 class="highlight-subtitle">🚀 On our way to Singapore! Representing Venezuela at WRO 2025</h4>
 
-        <section class="hero carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="assets/JSM-7.jpg" alt="Los tres tripulantes">
-                    <div class="carousel-caption">
-
-                        <p></p>
-                        <a href="#acerca" class="btn-primary">Lorem ipsum</a>
+                    <div class="countdown-timer">
+                        Days Remaining
+                        <span id="dias-restantes" class="countdown-number">...</span>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/JSM-7.jpg" alt="Tripulantes viajando">
-                    <div class="carousel-caption">
 
-                        <a href="#acerca" class="btn-primary">Lorem ipsum</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/JSM-8.jpg" alt="El robot explorador">
-                    <div class="carousel-caption">
+                    <div id="reloj-digital" class="digital-clock" aria-live="polite">00/00/0000 | 00:00:00</div>
 
-                        <a href="#acerca" class="btn-primary">Lorem ipsum</a>
-                    </div>
+                    <h2>About Us</h2>
+                    <p>
+                        Is it worth risking a human life to obtain a scientific fact? 
+                        At <strong>JSM CAM ROBOTICS</strong>, we believe that robotics offers 
+                        a different solution to this fundamental question. Our team has set out 
+                        to develop a robotic solution to this dilemma.
+                    </p>
+                    
+                    <h3>We have developed EXPLORER SYSTEM</h3>
+                    <p>
+                        During the WRO 2025 season, the focus was on the theme of 
+                        <em>"Robots for Life in Space."</em> This system is not simply a robotic solution, 
+                        but a set of robots working in a synchronized manner. Its main purpose is to detect 
+                        conditions favorable for life on other planets. The EXPLORER SYSTEM operates through 
+                        the integration of an exploration robot, a satellite, and a base station.
+                    </p>
                 </div>
-                <div class="carousel-item">
-                    <img src="assets/JSM-11.jpg" alt="Imagen de Marte 4">
-                    <div class="carousel-caption">
-
-                        <a href="#acerca" class="btn-primary">Lorem ipsum</a>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control prev"
-                aria-label="Imagen anterior">&#10094;</button>
-            <button class="carousel-control next"
-                aria-label="Imagen siguiente">&#10095;</button>
-            <div class="carousel-indicators">
-                <span class="dot active" data-slide-to="0"></span>
-                <span class="dot" data-slide-to="1"></span>
-                <span class="dot" data-slide-to="2"></span>
-                <span class="dot" data-slide-to="3"></span>
+                <img src="assets/JSM-11.jpg" alt="EXPLORER SYSTEM on Mars surface simulation" class="floating">
             </div>
         </section>
 
-        <main class="main-content">
-            <section id="acerca" class="section-acerca">
-                <div class="container">
-                    <div class="content-wrapper">
-                        <h4 class="highlight-subtitle">¡Rumbo a Singapur! Representando a Venezuela en la WRO 2025</h4>
-
-                      <p class="countdown-timer">
-                Días restantes: <span id="dias-restantes" class="countdown-number">...</span>
-            </p>
-            
-            <p id="reloj-digital" class="digital-clock">00/00/0000 | 00:00:00</p>
-
-                        <h2>Acerca</h2>
-                        <p>¿Vale la pena arriesgar una vida humana para obtener
-                            un dato científico?" En JSM CAM ROBOTICS, creemos
-                            que la robótica ofrece una solución diferente a esta
-                            pregunta fundamental. Nuestro equipo se propuso
-                            desarrollar una solución robótica para este
-                            dilema.</p>
-                        <h3>Hemos desarrollado el EXPLORER SYSTEM</h3>
-                        <p>durante la temporada WRO 2025, enfocados en el tema
-                            de los "Robots para la vida en el espacio". Este
-                            sistema no es simplemente una solución robótica,
-                            sino un conjunto de robots que trabajan de manera
-                            sincronizada. Su propósito principal es detectar
-                            condiciones favorables para la vida en otros
-                            planetas. El EXPLORER SYSTEM funciona a través de la
-                            integración de un robot explorador, un satélite y
-                            una estación base.</p>
-                    </div>
-                    <img src="assets/JSM-11.jpg"
-                        alt="Superficie marciana con rocas y un cielo rojizo">
-                </div>
-            </section>
-
-            <section id="equipo" class="section-equipo">
-                <div class="container">
-                    <h2>Integrantes del Equipo</h2>
-                    <div class="team-members">
-                        <div class="member-card">
-                            <div class="member-header">
-                                <img src="assets/JSM.jpg"
-                                    alt="Foto de Miembro 1"
-                                    class="member-photo">
-                                <div class="member-info">
-                                    <h3>Jesus Montilla</h3>
-                                    <p class="member-title">Líder de
-                                        Proyecto</p>
-                                    <p class="member-role">Programador
-                                    </p>
-                                </div>
-                                <button class="expand-btn" aria-expanded="false"
-                                    aria-controls="details-juan">&#43;</button>
-                            </div>
-                            <div class="member-details" id="details-juan">
-                                <p class="member-description-short">Jesus de
-                                    encuenntra
-                                    cursando el 2do año de bachillerato en el
-                                    Colegio Arzobispo
-                                    Méndez del estado Barinas</p>
-                                <div class="member-description-full">
-                                    <p>
-                                        Inició en la robótica a los 6 años (en
-                                        2017) con Scratch, lo que despertó su
-                                        interés por otros lenguajes de
-                                        programación. <br>
-
-                                        Pertenece al Plan Nacional de Semilleros
-                                        Científicos por el estado Barinas y ha
-                                        participado en la World Robotic Olympiad
-                                        y las Olimpiadas de Robótica Creativa.
-                                    </p>
-                                    <ul>
-                                        <li>Especialidad: Microbit
-                                        </li>
-                                        <li>Años de experiencia: 5+</li>
-                                        <li>Proyectos clave: JSM CAMROBOTICS
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="member-card">
-                            <div class="member-header">
-                                <img src="assets/JSM-6.jpg"
-                                    alt="Foto de Miembro 2"
-                                    class="member-photo">
-                                <div class="member-info">
-                                    <h3>Stephani Parra</h3>
-                                    <p class="member-title">Ensambladora
-                                    </p>
-                                    <p class="member-role">Desarrolladora Web.
-                                    </p>
-                                </div>
-                                <button class="expand-btn" aria-expanded="false"
-                                    aria-controls="details-maria">&#43;</button>
-                            </div>
-                            <div class="member-details" id="details-maria">
-                                <p class="member-description-short">Stephani
-                                    Cursa el 3er año de Bachillerato en el Liceo
-                                    Rosa Inés de Barinas
-                                    .</p>
-                                <div class="member-description-full">
-                                    <p>
-                                        Su interés por la robótica y la
-                                        programación comenzó a los 6 años con el
-                                        programa Scratch y ha trabajado con
-                                        tecnologias HTML,CSS, Javascript. <br>
-
-                                        Ha participado en la World Robotic
-                                        Olympiad, llegando a las Nacionales, y
-                                        en las Olimpiadas de Robótica Creativa
-                                    </p>
-                                    <ul>
-                                        <li>Especialidad: Plataforma Arduino y
-                                            Web.
-                                        </li>
-                                        <li>Años de experiencia: 8+</li>
-                                        <li>Defensa Verde, Frontier-Bot.
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="member-card">
-                            <div class="member-header">
-                                <img src="assets/JSM-4.jpg"
-                                    alt="Foto de Miembro 3"
-                                    class="member-photo">
-                                <div class="member-info">
-                                    <h3>Maria Montilla</h3>
-                                    <p class="member-title">Proyectista</p>
-                                    <p class="member-role">Estudiante Robótica.
-                                    </p>
-                                </div>
-                                <button class="expand-btn" aria-expanded="false"
-                                    aria-controls="details-carlos">&#43;</button>
-                            </div>
-                            <div class="member-details" id="details-carlos">
-                                <p class="member-description-short">
-                                    Cursa estudios en el Colegio Arzobispo
-                                    Méndez de Barinas.
-                                    .</p>
-                                <div class="member-description-full">
-                                    <p>
-                                        Su pasión por la
-                                        robótica, influenciada por su hermano
-                                        Jesús
-                                        Montilla, comenzó al unirse a
-                                        competencias y
-                                        avanzar al segundo Nivel Nacional en la
-                                        World Robot Olympiad. <br>
-
-                                        Posee un talento y capacidad intelectual
-                                        excepcionales, es una firme defensora de
-                                        la robótica y tiene habilidad en la
-                                        oratoria para expresar sus ideas.
-                                        Pertenece al Plan Nacional de Semilleros
-                                        Científicos por el estado Barinas y
-                                        obtuvo el 2do lugar nacional con su
-                                        robot Sowing protector en el Proyecto
-                                        CAMIX.
-                                    </p>
-                                    <ul>
-                                        <li>Especialidad: Sensores.
-                                        </li>
-                                        <li>Años de experiencia: 1+</li>
-                                        <li>Proyectos clave: Beginer.
-                                            </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section id="objetivos" class="section-objetivos">
-                <div class="container">
-                    <h2>Objetivos</h2>
-                    <div class="objective-cards">
-                        <div class="objective-card">
-                            <div class="icon-placeholder">
-                                <img src="assets/seguridad.png"
-                                    alt="Icono de Seguridad">
-                            </div>
-                            <h3>Promover la Seguridad y Confiabilidad</h3>
-                            <p>Proporcionar una alternativa segura y confiable a
-                                la exploración espacial tripulada.</p>
-                        </div>
-
-                        <div class="objective-card">
-                            <div class="icon-placeholder">
-                                <img src="assets/tendencia-ascendente.png"
-                                    alt="Icono de Temperatura y Humedad">
-                            </div>
-                            <h3>Recopilar Datos Ambientales Esenciales</h3>
-                            <p>Medir la temperatura ambiental y la humedad
-                                relativa del aire con el sensor DH11.</p>
-                        </div>
-
-                        <div class="objective-card">
-                            <div class="icon-placeholder">
-                                <img src="assets/ultravioleta (1).png"
-                                    alt="Icono de Rayos UV">
-                            </div>
-                            <h3>Detectar la intensidad de la radiación
-                                ultravioleta del sol</h3>
-                            <p>Detectar la intensidad de la radiación
-                                ultravioleta del sol con el sensor de rayos UV,
-                                ayudando a proteger a humanos y equipos.</p>
-                        </div>
-
-                        <div class="objective-card">
-                            <div class="icon-placeholder">
-                                <img src="assets/agua.png"
-                                    alt="Icono de Líquido">
-                            </div>
-                            <h3>Identificar la presencia o ausencia de
-                                líquido</h3>
-                            <p>Identificar la presencia o ausencia de líquido
-                                con el sensor de nivel de líquido.</p>
-                        </div>
-
-                        <div class="objective-card">
-                            <div class="icon-placeholder">
-                                <img src="assets/espacio.png"
-                                    alt="Icono de Vegetación Extraterrestre">
-                            </div>
-                            <h3>Detectar Vegetación Extraterrestre</h3>
-                            <p>Utilizar el lente de inteligencia artificial de
-                                ELECFREAKS para reconocer formas, colores y
-                                patrones de plantas, incluso si su apariencia es
-                                inusual.</p>
-                        </div>
-
-                        <div class="objective-card">
-                            <div class="icon-placeholder">
-                                <img src="assets/estacion-espacial.png"
-                                    alt="Icono de Entorno Habitable">
-                            </div>
-                            <h3>Asegurar Entornos Habitables</h3>
-                            <p>Detectar las condiciones a las que podríamos
-                                enfrentarnos en otros planetas para asegurar que
-                                el entorno sea seguro y adecuado para las
-                                actividades del robot y del ser humano.</p>
-                        </div>
-
-                        <div class="objective-card">
-                            <div class="icon-placeholder">
-                                <img src="assets/satelite (1).png"
-                                    alt="Icono de Conectividad Global">
-                            </div>
-                            <h3>Garantizar Conectividad Global</h3>
-                            <p>Mantener la conexión entre el robot y los centros
-                                de control mediante el Satélite Simón Bolívar 2,
-                                retransmitiendo el mensaje a la base de datos
-                                ABAE.</p>
-                        </div>
-
-                        <div class="objective-card">
-                            <div class="icon-placeholder">
-                                <img
-                                    src="assets/almacenamiento-de-base-de-datos.png"
-                                    alt="Icono de Base de Datos">
-                            </div>
-                            <h3>Centralizar el Análisis y Almacenamiento de
-                                Datos</h3>
-                            <p>La base de datos ABAE actúa como centro de
-                                operaciones, encargándose de la recepción,
-                                análisis y almacenamiento de todos los datos
-                                recolectados.</p>
-                        </div>
-
-                        <div class="objective-card">
-                            <div class="icon-placeholder">
-                                <img src="assets/engranajes.png"
-                                    alt="Icono de Escalabilidad">
-                            </div>
-                            <h3>Fomentar la Accesibilidad y Escalabilidad</h3>
-                            <p>Asegurar que nuestra tecnología sea accesible y
-                                tenga un gran potencial de escalabilidad para
-                                diversas aplicaciones.</p>
-                        </div>
-
-                        <div class="objective-card">
-                            <div class="icon-placeholder">
-                                <img src="assets/reciclar.png"
-                                    alt="Icono de Impacto Ambiental Positivo">
-                            </div>
-                            <h3>Generar un Impacto Ambiental Positivo</h3>
-                            <p>Contribuir a la exploración espacial con un
-                                enfoque en la sostenibilidad y un impacto
-                                ambiental beneficioso.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-
-        <footer class="main-footer">
+        <!-- TEAM SECTION -->
+        <section id="equipo" class="section-equipo">
             <div class="container">
-                <div class="footer-slogan">
-                    "Explorando lo desconocido, cultivando el futuro."
-                </div>
-                <div class="social-media">
-                    <a href="https://www.instagram.com/jsmcamrobotics/?utm_source=qr&igsh=ajZ4cXRpd3VvODNl#"
-                        target="_blank" aria-label="Instagram">
-                        <img src="assets/instagram (1).png" alt="Instagram">
-                    </a>
+                <h2>🌟 Team Members</h2>
+                <div class="team-members">
+                    <!-- Member 1 -->
+                    <div class="member-card">
+                        <div class="member-header">
+                            <img src="assets/JSM.jpg" alt="Jesus Montilla photo" class="member-photo">
+                            <div class="member-info">
+                                <h3>Jesus Montilla</h3>
+                                <p class="member-title">Project Leader</p>
+                                <p class="member-role">Programmer</p>
+                            </div>
+                            <button class="expand-btn" aria-expanded="false" aria-controls="details-jesus">&#43;</button>
+                        </div>
+                        <div class="member-details" id="details-jesus">
+                            <p class="member-description-short">
+                                He started in robotics at the age of 6 (in 2017) with Scratch, 
+                                which sparked his interest in other programming languages.
+                                He has participated in the World Robot Olympiad and the Creative Robotics Olympics.
+                            </p>
+                            <ul>
+                                <li><strong>Specialty:</strong> Arduino IDE, Python</li>
+                                <li><strong>Experience:</strong> 5+ years</li>
+                                <li><strong>Key Projects:</strong></li>
+                                <li>JSM CAM ROBOTICS - WRO 2025</li>
+                                <li>SAFE FRONTIERS - ORC 2025</li>
+                                <li>VEDRALLA - WRO 2024</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                    <a href="https://www.facebook.com/tu_usuario"
-                        target="_blank" aria-label="Facebook">
-                        <img src="assets/facebook.png" alt="Facebook">
-                    </a>
-                    <a href="https://www.youtube.com/tu_usuario" target="_blank"
-                        aria-label="YouTube">
-                        <img src="assets/youtube (1).png" alt="YouTube">
-                    </a>
+                    <!-- Member 2 -->
+                    <div class="member-card">
+                        <div class="member-header">
+                            <img src="assets/JSM-6.jpg" alt="Stephani Parra photo" class="member-photo">
+                            <div class="member-info">
+                                <h3>Stephani Parra</h3>
+                                <p class="member-title">Assembler</p>
+                                <p class="member-role">Mechanical Design</p>
+                            </div>
+                            <button class="expand-btn" aria-expanded="false" aria-controls="details-stephani">&#43;</button>
+                        </div>
+                        <div class="member-details" id="details-stephani">
+                            <p class="member-description-short">
+                                She started in robotics at the age of 5 (in 2017) by creating simple robots 
+                                for various competitions, which sparked her interest in their construction and programming.
+                                She has participated in the World Robot Olympiad (WRO) and the Creative Robotics Olympics (ORC).
+                            </p>
+                            <ul>
+                                <li><strong>Specialty:</strong> Construction & Mechanical Engineering</li>
+                                <li><strong>Experience:</strong> 6+ years</li>
+                                <li><strong>Key Projects:</strong></li>
+                                <li>JSM CAM ROBOTICS - WRO 2025</li>
+                                <li>SAFE FRONTIERS - ORC 2025</li>
+                                <li>UCRATALIANOS ALIADOS - WRO 2024</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Member 3 -->
+                    <div class="member-card">
+                        <div class="member-header">
+                            <img src="assets/JSM-4.jpg" alt="Maria Montilla photo" class="member-photo">
+                            <div class="member-info">
+                                <h3>Maria Montilla</h3>
+                                <p class="member-title">Project Designer</p>
+                                <p class="member-role">Robotics Student</p>
+                            </div>
+                            <button class="expand-btn" aria-expanded="false" aria-controls="details-maria">&#43;</button>
+                        </div>
+                        <div class="member-details" id="details-maria">
+                            <p class="member-description-short">
+                                Her passion for robotics, influenced by her brother Jesús Montilla, began when she 
+                                joined competitions and advanced to the second National Level in the World Robot Olympiad.
+                                She possesses exceptional talent and intellectual ability, is a firm advocate for robotics, 
+                                and has public speaking skills to express her ideas. She won 2nd national place with her 
+                                robot "Sowing Protector" in the CAMIX Project.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <p class="copyright">
-                    &copy; <span id="current-year"></span> Exploración Espacial.
-                    Todos los derechos reservados.
-                </p>
             </div>
-        </footer>
+        </section>
 
-        <script src="script/app.js"></script>
-    </body>
+        <!-- OBJECTIVES SECTION -->
+        <section id="objetivos" class="section-objetivos">
+            <div class="container">
+                <h2>🎯 Our Objectives</h2>
+                <div class="objective-cards">
+                    <div class="objective-card">
+                        <div class="icon-placeholder">
+                            <img src="assets/seguridad.png" alt="Security icon">
+                        </div>
+                        <h3>Promote Safety and Reliability</h3>
+                        <p>Provide a safe and reliable alternative to crewed space exploration.</p>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="icon-placeholder">
+                            <img src="assets/tendencia-ascendente.png" alt="Temperature and humidity icon">
+                        </div>
+                        <h3>Collect Essential Environmental Data</h3>
+                        <p>Measure ambient temperature and relative air humidity with the DH11 sensor.</p>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="icon-placeholder">
+                            <img src="assets/ultravioleta (1).png" alt="UV rays icon">
+                        </div>
+                        <h3>Detect UV Radiation Intensity</h3>
+                        <p>Detect the intensity of solar ultraviolet radiation with UV sensors, 
+                           helping protect humans and equipment.</p>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="icon-placeholder">
+                            <img src="assets/agua.png" alt="Liquid detection icon">
+                        </div>
+                        <h3>Identify Liquid Presence</h3>
+                        <p>Identify the presence or absence of liquids with liquid level sensors.</p>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="icon-placeholder">
+                            <img src="assets/espacio.png" alt="Extraterrestrial vegetation icon">
+                        </div>
+                        <h3>Detect Extraterrestrial Vegetation</h3>
+                        <p>Use ELECFREAKS AI lens to recognize shapes, colors, and plant patterns, 
+                           even if their appearance is unusual.</p>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="icon-placeholder">
+                            <img src="assets/estacion-espacial.png" alt="Habitable environment icon">
+                        </div>
+                        <h3>Ensure Habitable Environments</h3>
+                        <p>Detect conditions we might face on other planets to ensure the environment 
+                           is safe and suitable for robot and human activities.</p>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="icon-placeholder">
+                            <img src="assets/satelite (1).png" alt="Global connectivity icon">
+                        </div>
+                        <h3>Guarantee Global Connectivity</h3>
+                        <p>Maintain connection between the robot and control centers via Simón Bolívar 2 Satellite, 
+                           relaying messages to the ABAE database.</p>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="icon-placeholder">
+                            <img src="assets/almacenamiento-de-base-de-datos.png" alt="Database icon">
+                        </div>
+                        <h3>Centralize Data Analysis and Storage</h3>
+                        <p>The ABAE database acts as operations center, handling reception, 
+                           analysis, and storage of all collected data.</p>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="icon-placeholder">
+                            <img src="assets/engranajes.png" alt="Scalability icon">
+                        </div>
+                        <h3>Foster Accessibility and Scalability</h3>
+                        <p>Ensure our technology is accessible and has great scalability potential 
+                           for various applications.</p>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="icon-placeholder">
+                            <img src="assets/reciclar.png" alt="Positive environmental impact icon">
+                        </div>
+                        <h3>Generate Positive Environmental Impact</h3>
+                        <p>Contribute to space exploration with a focus on sustainability and 
+                           beneficial environmental impact.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-slogan">
+                "Beyond Earth, the hope for life rises on new planets that await us."
+            </div>
+            <div class="social-media">
+                <a href="https://www.instagram.com/jsmcamrobotics/?utm_source=qr&igsh=ajZ4cXRpd3VvODNl#" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Visit our Instagram">
+                    <img src="assets/instagram (1).png" alt="Instagram">
+                </a>
+                <a href="https://www.facebook.com/jsmcamrobotics" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Visit our Facebook">
+                    <img src="assets/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.youtube.com/@jsmcamrobotics" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Visit our YouTube channel">
+                    <img src="assets/youtube (1).png" alt="YouTube">
+                </a>
+            </div>
+            <p class="copyright">
+                &copy; <span id="current-year"></span> JSM CAM ROBOTICS. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script/app.js"></script>
+</body>
+
 </html>

@@ -1,164 +1,166 @@
+<!-- pages/galeria.html -->
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Galería de Fotos | JSM CAM ROBOTICS</title>
-        <link rel="stylesheet" href="../styles/main.css"> 
-        <link rel="stylesheet" href="../styles/galeria.css"> 
-    </head>
-    <body>
-        <header class="main-header">
-            <div class="container">
-                <a href="../index.html" class="logo">
-                    <img src="../assets/logojsm.jpeg" alt="Logo JSM CAM ROBOTICS">
-                </a>
-                <button class="menu-toggle" aria-label="Abrir menú">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="../index.html#acerca">Acerca</a></li>
-                        <li class="active"><a href="galeria.html">Galería</a></li>
-                        <li><a href="../index.html#equipo">Integrantes del Equipo</a></li>
-                        <li><a href="../index.html#objetivos">Objetivos</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photo gallery of JSM CAM ROBOTICS team moments at WRO 2025">
+    <title>Gallery | JSM CAM ROBOTICS</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/galeria.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/logojsm.jpeg" alt="Logo JSM CAM ROBOTICS">
+            </a>
+            <button class="menu-toggle" aria-label="Open menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html#acerca">About</a></li>
+                    <li class="active"><a href="galeria.html">Gallery</a></li>
+                    <li><a href="../index.html#equipo">Team</a></li>
+                    <li><a href="../index.html#objetivos">Objectives</a></li>
+                    <li><a href="terminosCondiciones.html">Terms</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-         <section class="hero carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="../assets/JSM-7.jpg" alt="Foto principal de la misión">
-                    <div class="carousel-caption">
-                        <h1>Momentos Clave en Nuestra Exploración</h1>
-                        <p>Visualizando la innovación, el esfuerzo y la pasión de JSM CAM ROBOTICS.</p>
-                        <a href="#galeria-fotos" class="btn-primary">Ver Fotos</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="../assets/JSM-8.jpg" alt="Robot explorador en acción">
-                    <div class="carousel-caption">
-                        <h1>El Explorer System en Acción</h1>
-                        <p>Tecnología robótica diseñada para la vida en el espacio.</p>
-                        <a href="#galeria-fotos" class="btn-primary">Ver Detalles</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="../assets/JSM-11.jpg" alt="Integrantes programando">
-                    <div class="carousel-caption">
-                        <h1>Detrás del Código y el Ensamblaje</h1>
-                        <p>La mente y la precisión que impulsan nuestro proyecto.</p>
-                        <a href="#galeria-fotos" class="btn-primary">Conócenos</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="../assets/robotExploradordos.png" alt="Ilustración de Marte">
-                    <div class="carousel-caption">
-                        <h1>Nuestra Meta: El Planeta Rojo</h1>
-                        <p>Recolección de datos esenciales para el futuro de la exploración espacial.</p>
-                        <a href="#galeria-fotos" class="btn-primary">Objetivos</a>
-                    </div>
+    <!-- HERO CAROUSEL -->
+    <section class="hero carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../assets/JSM-7.jpg" alt="Main mission photo">
+                <div class="carousel-caption">
+                    <h1>Key Moments in Our Exploration</h1>
+                    <p>Visualizing innovation, effort, and passion of JSM CAM ROBOTICS</p>
+                    <a href="#galeria-fotos" class="btn-primary">View Photos</a>
                 </div>
             </div>
-            
-            <button class="carousel-control prev" aria-label="Imagen anterior">&#10094;</button>
-            <button class="carousel-control next" aria-label="Imagen siguiente">&#10095;</button>
-            
-            <div class="carousel-indicators">
-                <span class="dot active" data-slide-to="0"></span>
-                <span class="dot" data-slide-to="1"></span>
-                <span class="dot" data-slide-to="2"></span>
-                <span class="dot" data-slide-to="3"></span>
+            <div class="carousel-item">
+                <img src="../assets/JSM-8.jpg" alt="Explorer robot in action">
+                <div class="carousel-caption">
+                    <h1>The Explorer System in Action</h1>
+                    <p>Robotic technology designed for life in space</p>
+                    <a href="#galeria-fotos" class="btn-primary">View Details</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../assets/JSM-11.jpg" alt="Team members programming">
+                <div class="carousel-caption">
+                    <h1>Behind the Code and Assembly</h1>
+                    <p>The mind and precision that drive our project</p>
+                    <a href="#galeria-fotos" class="btn-primary">Meet Us</a>
+                </div>
+            </div>
+        </div>
+        
+        <button class="carousel-control prev" aria-label="Previous image">&#10094;</button>
+        <button class="carousel-control next" aria-label="Next image">&#10095;</button>
+        
+        <div class="carousel-indicators">
+            <span class="dot active" data-slide-to="0"></span>
+            <span class="dot" data-slide-to="1"></span>
+            <span class="dot" data-slide-to="2"></span>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <main class="main-content">
+        <section id="galeria-fotos" class="section-galeria-fotos">
+            <div class="container">
+                <h2>📸 Team Gallery</h2>
+                <p>A collection of highlighted moments from JSM CAM ROBOTICS at WRO 2025</p>
+
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="../assets/minjscam.jpeg" alt="Team at competition" loading="lazy">
+                        <div class="photo-caption">
+                            <p><strong>WRO 2025 Competition</strong> - National Phase</p>
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <img src="../assets/robotexplorador.jpeg" alt="Explorer robots" loading="lazy">
+                        <div class="photo-caption">
+                            <p><strong>The Explorer Robots</strong> - EXPLORER SYSTEM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="photo-item">
+                        <img src="../assets/reflexiones.jpeg" alt="Pre-competition reflections" loading="lazy">
+                        <div class="photo-caption">
+                            <p><strong>Pre-competition Reflections</strong> - Strategic planning</p>
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <img src="../assets/demostraciones.jpeg" alt="Demonstrations at nationals" loading="lazy">
+                        <div class="photo-caption">
+                            <p><strong>Demonstrations at Nationals</strong> - Showcasing our project</p>
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <img src="../assets/asesoriasdos.jpeg" alt="Coaching for Singapore" loading="lazy">
+                        <div class="photo-caption">
+                            <p><strong>Coaching Sessions</strong> - Preparing for Singapore</p>
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <img src="../assets/practicando.jpeg" alt="Practicing at booth" loading="lazy">
+                        <div class="photo-caption">
+                            <p><strong>Practice Makes Perfect</strong> - Final preparations</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+    </main>
 
-        <main class="main-content">
-            <section id="galeria-fotos" class="section-galeria-fotos">
-                <div class="container">
-                    <h2>📸 Galería del Equipo</h2>
-                    <p>Una colección de momento destacados de JSM CAM ROBOTICS en la WRO 2025.</p>
-
-                    <div class="photo-grid">
-                        <div class="photo-item">
-                            <img src="../assets/minjscam.jpeg" alt="Foto del equipo en la competencia">
-                            <div class="photo-caption">
-                                <p>Competencia WRO 2025 - Fase Nacional.</p>
-                            </div>
-                        </div>
-
-                        <div class="photo-item">
-                            <img src="../assets/robotexplorador.jpeg" alt="Jesus trabajando con microbit">
-                            <div class="photo-caption">
-                                <p>Los Robot Exploradores.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="photo-item">
-                            <img src="../assets/reflexiones.jpeg" alt="Stephani y María ensamblando">
-                            <div class="photo-caption">
-                                <p>Reflexiones previas a la competencia.</p>
-                            </div>
-                        </div>
-
-                        <div class="photo-item">
-                            <img src="../assets/demostraciones.jpeg" alt="Foto de sensores y arduinos">
-                            <div class="photo-caption">
-                                <p>Demostraciones en las nacionales.</p>
-                            </div>
-                        </div>
-
-                        <div class="photo-item">
-                            <img src="../assets/asesoriasdos.jpeg" alt="Foto de sensores y arduinos">
-                            <div class="photo-caption">
-                                <p>En asesorias para las internacionales de Singapur.</p>
-                            </div>
-                        </div>
-
-                        <div class="photo-item">
-                            <img src="../assets/practicando.jpeg" alt="Foto de sensores y arduinos">
-                            <div class="photo-caption">
-                                <p>Practicando en el stand.</p>
-                            </div>
-                        </div>
-                        
-                        </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="main-footer">
-            <div class="container">
-                <div class="footer-slogan">
-                    "Explorando lo desconocido, cultivando el futuro."
-                </div>
-                <div class="social-media">
-                   <a href="https://www.instagram.com/jsmcamrobotics/?utm_source=qr&igsh=ajZ4cXRpd3VvODNl#"
-                        target="_blank" aria-label="Instagram">
-                        <img src="../assets/instagram (1).png" alt="Instagram">
-                    </a>
-
-                    <a href="https://www.facebook.com/tu_usuario"
-                        target="_blank" aria-label="Facebook">
-                        <img src="../assets/facebook.png" alt="Facebook">
-                    </a>
-                    <a href="https://www.youtube.com/tu_usuario" target="_blank"
-                        aria-label="YouTube">
-                        <img src="../assets/youtube (1).png" alt="YouTube">
-                    </a>
-                </div>
-                <p class="copyright">
-                    &copy; <span id="current-year"></span> Exploración Espacial. Todos los derechos reservados.
-                </p>
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-slogan">
+                "Exploring the unknown, cultivating the future."
             </div>
-        </footer>
+            <div class="social-media">
+                <a href="https://www.instagram.com/jsmcamrobotics/?utm_source=qr&igsh=ajZ4cXRpd3VvODNl#"
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Instagram">
+                    <img src="../assets/instagram (1).png" alt="Instagram">
+                </a>
+                <a href="https://www.facebook.com/jsmcamrobotics"
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Facebook">
+                    <img src="../assets/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.youtube.com/@jsmcamrobotics" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="YouTube">
+                    <img src="../assets/youtube (1).png" alt="YouTube">
+                </a>
+            </div>
+            <p class="copyright">
+                &copy; <span id="current-year"></span> JSM CAM ROBOTICS. All rights reserved.
+            </p>
+        </div>
+    </footer>
 
-        <script src="../script/app.js"></script>
-        <script>
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-        </script>
-    </body>
+    <script src="../script/app.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
 </html>
